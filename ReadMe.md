@@ -1,6 +1,6 @@
 ﻿# このソフトウェアについて
 
-GitHubアップローダのResponse部を改修した。
+GitHubアップローダのResponse部を改修した2。
 
 `./web/http/Response.py`が削除され、`./web/service/github/api/v3/Response.py`になった。
 

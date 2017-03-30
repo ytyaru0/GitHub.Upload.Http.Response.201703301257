@@ -1,5 +1,6 @@
 #!python3
 #encoding:utf-8
+import web.http.Response
 import web.service.github.api.v3.Response
 import web.service.github.api.v3.RequestParam
 from web.service.github.api.v3.miscellaneous import Licenses

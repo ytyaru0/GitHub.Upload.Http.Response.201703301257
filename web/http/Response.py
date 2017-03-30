@@ -6,10 +6,9 @@ from urllib.parse import urlparse
 import re
 from PIL import Image
 from io import BytesIO
-class Response:
+class Response(object):
     def __init__(self):
-        self.Headers = Headers.Headers()
-        self.responseHandler = None
+        self.Headers = Response.Headers()
     def Get(self, r, sleep_time=2, is_show=True):
         if is_show:
             print('Request---------------------')
@@ -23,9 +22,6 @@ class Response:
         r.raise_for_status()
         
         self.headers.ContentType.Split(r)
-#        self.headers.ContentType.mime_type
-#        self.headers.ContentType.parameters['charset']
-        
         if 'application/json' == self.headers.ContentType.mime_type:
             return r.json()
         elif ('image/gif' == self.headers.ContentType.mime_type or
@@ -36,15 +32,12 @@ class Response:
 #        elif r.request.stream:
 #            return r.raw
         else:
-            if None is self.responseHandler:
-                return r.text
-            else:
-                return self.responseHandler(r)
+            return r.text
             
     class Headers:
         def __init__(self):
-            self.ContentType = ContentType.ContentType()
-            self.Link = Link.Link()
+            self.ContentType = Response.Headers.ContentType()
+            self.Link = Response.Headers.Link()
 
         class Link:
             def __init__(self):
